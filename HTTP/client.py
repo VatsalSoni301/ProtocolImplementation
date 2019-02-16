@@ -27,7 +27,7 @@ while True:
 	try:
 		s.connect((host_ip[0], port)) 
 		s.send(ip)
-		response = s.recv(10240)
+		response = s.recv(1024000)
 		to_print = response.split(delimeter)
 		print "Status Code",":",to_print[0]
 		print "Content Type",":",to_print[1]

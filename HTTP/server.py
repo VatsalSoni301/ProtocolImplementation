@@ -4,7 +4,7 @@ import os
 s = socket.socket()          
 print "Socket successfully created"
 
-port = 49992            
+port = 49995  
   
 s.bind(('', port))         
 print "socket binded to %s" %(port) 
@@ -24,11 +24,12 @@ while True:
    	c, addr = s.accept()      
    	print 'Got connection from', addr 
   	print "client ip+port",addr 
-	response = c.recv(10240)
+	response = c.recv(1024000)
 	print response
 	a=response.index('/')
 	domain=response[:a]
-	path=mapping[domain]
+	# print "2222222",addr[0]
+	path=mapping[addr[0]]
 	filepath=response[a+1:]
 	finalpath=path+filepath
 	content=""
