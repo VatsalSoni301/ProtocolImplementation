@@ -29,7 +29,7 @@ while True:
 	try:
 		s.connect((host_ip[0], port))
 		s.send(ip)
-		response = s.recv(10240)
+		response = s.recv(1024000)
 		print response
 		if response=="OK":
 			s1 = socket.socket()  
@@ -38,7 +38,7 @@ while True:
 			s1.listen(5)
 			s.send("READY TO LISTEN")
 			c, addr = s1.accept()
-			response1 = c.recv(10240)
+			response1 = c.recv(1024000)
 			to_print = response1.split(delimeter)
 			print "Status Code",":",to_print[0]
 			print "Content Type",":",to_print[1]

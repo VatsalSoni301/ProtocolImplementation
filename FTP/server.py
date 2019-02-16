@@ -26,7 +26,7 @@ while True:
    	c, addr = s.accept()      
    	print 'Got connection from', addr 
   	print "client ip+port",addr 
-  	response = c.recv(10240)
+  	response = c.recv(1024000)
 	print response
 	a=response.index('/')
 	domain=response[:a]
@@ -44,7 +44,7 @@ while True:
 		status_code=str(200)
 		to_send=status_code+delimeter+type_of_content+delimeter+content_length+delimeter+content
 		c.send("OK")
-		c.recv(1024)
+		c.recv(1024000)
 		c.close()
 	  	try: 
 			s1 = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
